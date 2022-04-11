@@ -5,6 +5,9 @@ build
 .vscode
 .pytest_cache
 .cache
+*.idea
+*.npz
+*.zip
 *.pyc
 *.pt
 *.so
