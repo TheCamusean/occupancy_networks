@@ -31,7 +31,7 @@ Then, install the external folders in `external/mesh_fusion`
     cd ..
     # build PyMCubes
     cd libmcubes
-    pip install -e .
+    python setup.py build_ext --inplace
 ```
 
 Next, install im2mesh
@@ -61,7 +61,7 @@ The repository generates a set of points labeled with the occupancy and the poin
 We first need to generate in config.sh the desired parameters.
 
 ```
-cd scripts
-bash dataset_shapenet/build.sh
+cd scripts/dataset_shapenet
+./build.sh
 ``` 
 
