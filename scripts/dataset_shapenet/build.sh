@@ -1,5 +1,7 @@
-source dataset_shapenet/config.sh
+source config.sh
+
 # Make output directories
+echo $BUILD_PATH
 mkdir -p $BUILD_PATH
 
 # Run build
@@ -42,11 +44,11 @@ for c in ${CLASSES[@]}; do
     --t_dir $build_path_c/1_transform
 
   echo "Process watertight meshes"
-  python sample_mesh.py $build_path_c/2_watertight \
+  python ../sample_mesh.py $build_path_c/2_watertight \
       --n_proc $NPROC --resize \
       --bbox_in_folder $build_path_c/0_in \
       --pointcloud_folder $build_path_c/4_pointcloud \
       --points_folder $build_path_c/4_points \
       --mesh_folder $build_path_c/4_watertight_scaled \
-      --packbits --float16
+      #--packbits --float16
 done

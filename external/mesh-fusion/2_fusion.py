@@ -8,11 +8,12 @@ import argparse
 import ntpath
 
 # Import shipped libraries.
-import librender
 import libmcubes
+import librender
+
 from multiprocessing import Pool
 
-use_gpu = True
+use_gpu = False
 if use_gpu:
     import libfusiongpu as libfusion
     from libfusiongpu import tsdf_gpu as compute_tsdf

@@ -4,7 +4,6 @@ except ImportError:
     from distutils.core import setup
 from distutils.extension import Extension
 from Cython.Build import cythonize
-from torch.utils.cpp_extension import BuildExtension, CppExtension, CUDAExtension
 import numpy
 
 
@@ -71,25 +70,6 @@ voxelize_module = Extension(
     libraries=['m']  # Unix-like specific
 )
 
-# DMC extensions
-dmc_pred2mesh_module = CppExtension(
-    'im2mesh.dmc.ops.cpp_modules.pred2mesh',
-    sources=[
-        'im2mesh/dmc/ops/cpp_modules/pred_to_mesh_.cpp',
-    ]   
-)
-
-dmc_cuda_module = CUDAExtension(
-    'im2mesh.dmc.ops._cuda_ext', 
-    sources=[
-        'im2mesh/dmc/ops/src/extension.cpp',
-        'im2mesh/dmc/ops/src/curvature_constraint_kernel.cu',
-        'im2mesh/dmc/ops/src/grid_pooling_kernel.cu',
-        'im2mesh/dmc/ops/src/occupancy_to_topology_kernel.cu',
-        'im2mesh/dmc/ops/src/occupancy_connectivity_kernel.cu',
-        'im2mesh/dmc/ops/src/point_triangle_distance_kernel.cu',
-    ]
-)
 
 # Gather all extension modules
 ext_modules = [
@@ -99,13 +79,9 @@ ext_modules = [
     mise_module,
     simplify_mesh_module,
     voxelize_module,
-    dmc_pred2mesh_module,
-    dmc_cuda_module,
 ]
 
 setup(
     ext_modules=cythonize(ext_modules),
-    cmdclass={
-        'build_ext': BuildExtension
-    }
+    packages=['im2mesh'],
 )
