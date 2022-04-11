@@ -6,6 +6,7 @@ build
 .pytest_cache
 .cache
 *.idea
+*.egg-info
 *.npz
 *.zip
 *.pyc
