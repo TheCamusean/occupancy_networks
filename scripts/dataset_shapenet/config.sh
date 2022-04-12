@@ -17,7 +17,7 @@ N_TEST=100
 N_AUG=50
 
 declare -a CLASSES=(
-02691156
+simple_table
 )
 
 # Utility functions

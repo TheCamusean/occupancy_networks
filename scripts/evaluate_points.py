@@ -6,7 +6,9 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
 
-data_folder = '02691156'
+#data_folder = '02691156'
+data_folder = 'simple_table'
+
 
 basedir = os.path.abspath(os.path.dirname(__file__+'../../../'))
 data_dir = os.path.abspath(os.path.join(basedir, '..', 'data', 'train_data', data_folder))
